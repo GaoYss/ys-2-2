@@ -25,6 +25,11 @@ export const api = {
       method: "POST",
       body: JSON.stringify(payload),
     }),
+  updateClass: (classId, payload) =>
+    request(`/classes/${classId}`, {
+      method: "PUT",
+      body: JSON.stringify(payload),
+    }),
   getCourses: () => request("/courses"),
   getSchedule: () => request("/schedule"),
   generateSchedule: (payload) =>

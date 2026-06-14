@@ -62,8 +62,15 @@ export default function App() {
   }
 
   async function handleAddStudent(classId, payload) {
-    await api.addStudent(classId, payload);
+    const result = await api.addStudent(classId, payload);
     await refreshAll();
+    return result;
+  }
+
+  async function handleUpdateClass(classId, payload) {
+    const result = await api.updateClass(classId, payload);
+    await refreshAll();
+    return result;
   }
 
   async function handleGenerateSchedule(payload) {
@@ -130,6 +137,8 @@ export default function App() {
                 classes={classes}
                 onCreateClass={handleCreateClass}
                 onAddStudent={handleAddStudent}
+                onUpdateClass={handleUpdateClass}
+                onRefresh={refreshAll}
               />
             )}
             {activeTab === "schedule" && (
